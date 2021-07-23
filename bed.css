@@ -1,0 +1,58 @@
+h1{
+color:midnightblue;
+
+font-size: 55px;
+
+}
+.go{
+
+color: #c66653;
+
+}
+a{
+text-decoration: none;
+}
+.button{
+margin-left: 1400px;
+font-size:20px;
+}
+.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+h3{
+font-size: 20px;
+color:black;
+}
+h2{
+	color:midnightblue;
+	text-align: center;
+	font-size:30px;
+}
+.add{
+color:midnightblue;
+}
+body{
+background-image: url("history-of-the-hospital-bed.jpg");
+ background-repeat:no-repeat;
+  background-size:cover;
+
+}
+table{
+	width:70%;
+	height:70%;
+}
+tr:nth-child(odd){
+
+	background-color: powderblue;
+}
+tr:nth-child(even){
+
+	background-color: aliceblue;
+}
+table,td,tr{
+	align: center;
+	border: 3px solid #5494af;
+	border-collapse: collapse;
+	font-size:25px;
+}

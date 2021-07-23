@@ -1,0 +1,103 @@
+<?php 
+session_start();
+require_once('header.php');
+	include("connect.php");
+	include("func.php");
+
+    $user_id=random_num(2);
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$uname = $_POST['user_name'];
+		$pword = $_POST['password'];
+        $cpword = $_POST['cpassword'];
+		if(!empty($uname) && !empty($pword) && !is_numeric($uname))
+		{  
+			$query = "insert into users (user_id,name,uname,pword) values ('$user_id','$uname','$uname','$pword')";
+          
+			mysqli_query($server, $query);
+            if($pword==$cpword)
+            {
+               session_start();
+                $_SESSION['user_id']=$user_id;
+                $_SESSION['name']=$uname;
+                Redirect('dashboard.php'); 
+                
+            }
+			else
+            {
+                echo "check your password again";
+            }
+        }
+        else
+		{
+			echo "Please enter some valid information!";
+		}
+       
+	}
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup</title>
+    </head>
+<body>
+
+    <link href="transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+	<style type="text/css">
+        #box{
+
+	    margin-top:0px;
+        margin-left: 500px;
+        }
+        
+        #sign
+        {
+           margin-right: 500px;
+        }
+        #button{
+
+		margin-left:190px;
+        }
+        #text
+        {
+         margin-right: 100px;
+          margin-left: 20px; 
+        }
+     .sign{
+margin-left: 80px;
+margin-right: 570px;
+
+}
+label{
+	 text-shadow: 1px 1px 1.5px black;
+
+	}
+
+	</style>
+  <div id="box">
+		
+		<form method="post" class="container" >
+			<div  class="align" style="font-size: 25px;margin: 10px;color: midnightblue; text-shadow: 2px 2px 2px black;"><h2 id="sign">User Sign-Up</h2></div>
+
+			<label><b>Username: </b></label><input id="text" type="text" placeholder="enter your name" name="user_name"><br><br>
+			<label><b>Password:   </b> </label><input id="text" type="password"  placeholder="enter your password"name="password"><br><br>
+            <label><b>Confirm Password:  </b></label><input id="text" type="password"  placeholder="enter your password"name="cpassword"><br><br>
+			
+			<input id="button" type="submit" value="Sign In">
+           <p class="sign" style="color:#5494af; font-size: 25px; text-shadow: 1px 1px 1.5px black;">Already have an account?<a href="index.php">  Login </a></p> 
+
+		
+		</form>
+	</div> 
+    
+
+
+	
+</body>
+</html>
+ <?php
+	require_once('footer.php');
+?> 
